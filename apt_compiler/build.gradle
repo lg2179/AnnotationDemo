@@ -1,0 +1,12 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':apt_annotation')
+    //@AutoService(Processor.class) 注解是利用了 Google 的 AutoService 为注解处理器自动生成 metadata 文件并将注解处理器jar文件加入构建路径，
+    // 这样也就不需要再手动创建并更新 META-INF/services/javax.annotation.processing.Processor 文件了。
+    implementation 'com.google.auto.service:auto-service:1.0-rc2'
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
